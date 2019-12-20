@@ -68,13 +68,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 socket.on("system new", name => {
-  document.getElementById("messages").innerText += `\t\t\ ${name} прісоединился! \n`; 
+  document.getElementById("messages").innerText += `\t\t\ ${name} присоединился! \n`; 
 });
 
 socket.on("render message", data => {
-  if(e.target.elements[0].value = "кот"){
+  if(e.target.elements[0].value == "кот"){
     alert("кот");
-    document.getElementById("messages").innerText += `===[${data.username}]: ${data.message} \n`; 
+    document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`; 
   }
   else{
     document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`; 
