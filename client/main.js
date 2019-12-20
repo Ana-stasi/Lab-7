@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 alert("кот");
     }
     
-    if (!isVisited) {
+    else if (!isVisited) {
       //если не зарегались
       alert("Сначала зарегистрируйтесь");
       return;
