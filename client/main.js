@@ -77,8 +77,9 @@ socket.on("system new", name => {
 
 socket.on("render message", data => {
   if(e.target.elements[0].value=="кот"){
+    document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;
   alert("кот");
-  document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;
+
   }
   else { document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;}
 });
