@@ -34,7 +34,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
      if(e.target.elements[0].value =="кот"){
-      document.getElementById("messages")=alert("кот");
+      socket.on("system new", name => {
+        document.getElementById("messages").innerText += alert("кот");
+      });
+    
           }
         
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
