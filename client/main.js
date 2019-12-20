@@ -25,26 +25,29 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Не оставляйте поле сообщения пустым");
       return;
     }
-    else if(e.target.elements[0].value =="кот"){
-alert("кот");
-    }
+ 
     
     else if (!isVisited) {
-      //если не зарегались
+      
       alert("Сначала зарегистрируйтесь");
       return;
     }
+    if(isVisited){
+     if(e.target.elements[0].value =="кот"){
+      alert("кот");
+          }
+        }
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
 
 
   };
   document.getElementById("toHistory").onclick = async () => {
-    if (!isHistory && isVisited) {  //если зарегестрированы и нажата кнопка истории
+    if (!isHistory && isVisited) {  
       await fetch("/db") //запрос в бд
         .then(response => {
           if (response.ok) {
-            return response.json(); //обьект с данными с бд
+            return response.json(); 
           }
         })
         .then(data => {
