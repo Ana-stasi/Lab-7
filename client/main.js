@@ -34,11 +34,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   
      if(e.target.elements[0].value =="кот"){
-      socket.on("system new", name => {
-        document.getElementById("messages").innerText += alert("кот");
+      data.forEach( elem => {
+        document.getElementById("message") = alert('[${elem.username}]'+"кот"); //выводим сообщения
       });
-    
-          }
+   
+     }
         
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
