@@ -25,8 +25,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Не оставляйте поле сообщения пустым");
       return;
     }
-    if(e.target.elements[0].value =='кот'){
-alert(e.target.elements[0].value);
+    else if(e.target.elements[0].value =="кот"){
+alert("кот");
     }
     
     if (!isVisited) {
