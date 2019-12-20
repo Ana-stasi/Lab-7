@@ -1,11 +1,10 @@
-const sqlite3 = require('sqlite3').verbose(); //подключаем 
+const sqlite3 = require('sqlite3').verbose(); 
 
-const DB_PATH = 'app.db' //название 
+const DB_PATH = 'app.db'
+const DB = new sqlite3.Database(DB_PATH); 
 
-const DB = new sqlite3.Database(DB_PATH); //инициализация новой бд
-
-DB.serialize(() => { //создаем таблицу
+DB.serialize(() => { 
     DB.run("CREATE TABLE IF NOT EXISTS messages (key INT PRIMARY KEY UNIQUE,username TEXT, message TEXT)");
 })
 
-module.exports = DB; //экспортируем бд
+module.exports = DB; 
