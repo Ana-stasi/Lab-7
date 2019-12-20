@@ -32,11 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Сначала зарегистрируйтесь");
       return;
     }
-    if(isVisited){
+  
      if(e.target.elements[0].value =="кот"){
-      alert("кот");
+      document.getElementById("messages")=alert("кот");
           }
-        }
+        
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
 
