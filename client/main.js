@@ -33,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
   
-      
+    
+   
+    
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
 
@@ -80,6 +82,5 @@ socket.on("render message", data => {
     alert("кот");
     document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;
   }
-  else { document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;}
+  else{document.getElementById( "messages").innerText += `[${data.username}]: ${data.message} \n`;} //выводим
 });
-
