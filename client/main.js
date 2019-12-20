@@ -33,13 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
   
-     if(e.target.elements[0].value =="кот"){
-      data.forEach( elem => {
-        document.getElementById("message") = alert('[${elem.username}]'+"кот"); //выводим сообщения
-      });
-   
-     }
-        
+      
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
 
@@ -58,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
           messages = box.innerText; //сохранение сообщения
           isHistory = true; 
           box.innerText = ""; 
+        
           data.forEach(elem => {
             box.innerText += `[${elem.username}]: ${elem.message}`; //выводим сообщения
           });
@@ -81,7 +76,8 @@ socket.on("system new", name => {
 });
 
 socket.on("render message", data => {
-  document.getElementById(    //слушаем сообщение от клиента
-    "messages"
-  ).innerText += `[${data.username}]: ${data.message} \n`; //выводим
+  if(e.target.elements[0].value=='кот'){
+  alert("кот");
+  }
+  else { document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;}
 });
