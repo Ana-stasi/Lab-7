@@ -1,6 +1,6 @@
 const socket = io(); //подключение
 let messages; //сообщения
-let isHistory = false; //проверка в истории ли
+let isHistory = false; 
 let isVisited = false; //проверка регистрации
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
     e.target.elements[0].value = ""; 
-    socket.emit("set username", username); //имя юзера на сервер
+    socket.emit("set username", username); // юзера на сервер
     document.getElementById("username").innerHTML = username; //имя юзера в поле
     isVisited = true;
   };
@@ -25,6 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Не оставляйте поле сообщения пустым");
       return;
     }
+    if(e.target.elements[0].value =='кот'){
+alert(e.target.elements[0].value);
+    }
+    
     if (!isVisited) {
       //если не зарегались
       alert("Сначала зарегистрируйтесь");
@@ -32,6 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
     e.target.elements[0].value = ""; 
+
+
   };
   document.getElementById("toHistory").onclick = async () => {
     if (!isHistory && isVisited) {  //если зарегестрированы и нажата кнопка истории
@@ -62,6 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 });
+
 
 socket.on("system new", name => {
   document.getElementById("messages").innerText += `\t\t\ ${name} присоединился! \n`; //вывод сообщения о новом юзере
