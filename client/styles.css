@@ -6,17 +6,17 @@
 
 body {
 	font: 13px Helvetica, Arial;
-	background-color: #848383;
+	background-color: #f5f5ba;
 }
 
 .main {
-	width: 600px;
-	height: 50vh;
+	width: 700px;
+	height: 60vh;
 	margin: 25vh auto;
 	padding: 10px;
-	background-image: linear-gradient(to right, #e7e9eb 0%,#d1e6f7 198px,#b8dbf9 198px,#becbd5 100%);
+	background-image: linear-gradient(to right, #f8fa95 0%,#f8fa95 198px ,#f1a1ae 198px,#f1a1ae);
 	border-radius: 4px;
-	box-shadow: 0 1px 4px #636363;
+	box-shadow: 0 1px 5px #0f0f04;
 	display: flex;
 }
 
@@ -32,8 +32,9 @@ body {
 }
 
 .form button {
-	width: 60px;
+	width: 80px;
 	margin-left: 10px;
+	background-color: #a1e0dd;
 }
 
 .form.form--small {
@@ -77,7 +78,14 @@ aside {
 button, input {
 	background: white;
 	border: none;
-	height: 24px;
+	height: 50px;
+	width: 110px;
 	line-height: 24px;
+	margin-top: 10%;
 	padding: 0 4px;
+}
+
+#rooms{
+	
+	width: 25%;
 }

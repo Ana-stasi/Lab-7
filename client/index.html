@@ -1,44 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-<head>
-  <title>Socket.IO chat</title>
-  <link rel="shortcut icon" href="./favicon.png">
-  <link rel="stylesheet" href="./styles.css">
-</head>
+  <head>
+    <title>Telegram</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
 
-<body>
-  
-<main class="main">
-  <aside>
-    <pre class="username" id="username">Select username</pre>
+  <body>
+    <main class="main">
+      <aside>
+        <pre class="username" id="username">Изменить имя</pre>
+        <form class="form form--small" id="room">
+          <input type="text" placeholder="Имя" autocomplete="off" />
+          <button type="submit">Готово</button>
+        </form>
+        <div class="createroom" id="rooms">
+          <button type="button" id='toChat'>Чат</button><br>
+          <button type="button" id="toHistory">История</button>
+        </div>
+      </aside>
 
-    <pre class="scrollable" id="rooms">
-      <button type="button" id='toChat'>['main']</button>
-      <button type="button" id="toHistory">['history']</button>
-    </pre>
-
-    <form class="form form--small" id="room">
-      <input type="text" placeholder="Username" autocomplete="off">
-      <button type="submit">Set</button>
-    </form>
-  </aside>
-
-  <article>
-    <pre class="scrollable" id="messages"></pre>
-
-    <pre class="typing" id="typingStatus"></pre>
-
-    <form class="form" id="messageForm">
-      <input type="text" placeholder="your message here" autocomplete="off">
-      <button type="submit">send</button>
-    </form>
-  </article>
-
-</main>
-
-
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
-<script src="./main.js"></script>
-</body>
+      <article>
+        <pre class="scrollable" id="messages"></pre>
+        <pre class="typing" id="typingStatus"></pre>
+        <form class="form" id="messageForm">
+          <input
+            type="text"
+            placeholder="Сообщение"
+            autocomplete="off"
+          />
+          <button type="submit">Отправить</button>
+        </form>
+      </article>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script src="./main.js"></script>
+  </body>
 </html>
