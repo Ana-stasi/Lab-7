@@ -1,20 +1,24 @@
-const socket = io(); //подключение
-let messages; //сообщения
+
+const socket = io(); 
+let messages; 
 let isHistory = false; 
-let isVisited = false; //проверка регистрации
+let isVisited = false; 
+
+let test;
 
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("room").onsubmit = e => {
-    e.preventDefault(); //запрещаем перезагрузку
+    e.preventDefault(); 
     const username = e.target.elements[0].value; 
     if (!e.target.elements[0].value)
     {
-      alert("Введите имя пользователя");
+      alert("Введите имя");
       return;
     }
     e.target.elements[0].value = ""; 
-    socket.emit("set username", username); // юзера на сервер
-    document.getElementById("username").innerHTML = username; //имя юзера в поле
+    socket.emit("set username", username); 
+    document.getElementById("username").innerHTML = username; 
+    test = username;
     isVisited = true;
   };
 
@@ -22,65 +26,58 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault(); 
     if (!e.target.elements[0].value)
     {
-      alert("Не оставляйте поле сообщения пустым");
+      alert("Пустые поля");
+      return;
+    }    
+    if (!isVisited) {
+      alert("Сначала создайте аккаунт");
       return;
     }
- 
-    
-    else if (!isVisited) {
-      
-      alert("Сначала зарегистрируйтесь");
-      return;
-    }
-  
-    
-   
-    
-    socket.emit("message", e.target.elements[0].value); //отправляем на сервер сообщение
+
+    socket.emit("message", e.target.elements[0].value); 
     e.target.elements[0].value = ""; 
-
-
   };
   document.getElementById("toHistory").onclick = async () => {
     if (!isHistory && isVisited) {  
-      await fetch("/db") //запрос в бд
+      await fetch("/db") 
         .then(response => {
           if (response.ok) {
-            return response.json(); 
+            return response.json(); //оbject with db data
           }
         })
         .then(data => {
           const box = document.getElementById("messages"); 
-          messages = box.innerText; //сохранение сообщения
+          messages = box.innerText; 
           isHistory = true; 
           box.innerText = ""; 
-        
           data.forEach(elem => {
-            box.innerText += `[${elem.username}]: ${elem.message}`; //выводим сообщения
+            box.innerText += `[${elem.username}]: ${elem.message}`; 
           });
         });
     } else {
-      alert("Сначала зарегистрируйтесь");
+      alert("Сначала создайте аккаунт");
       return;
     }
   };
   document.getElementById("toChat").onclick = () => { 
-    if (isHistory) { //если мы в истории
-      document.getElementById("messages").innerText = messages; //выводим сохраненные сообщения
+    if (isHistory) { 
+      document.getElementById("messages").innerText = messages; 
       isHistory = false; 
     }
   };
 });
 
-
 socket.on("system new", name => {
-  document.getElementById("messages").innerText += `\t\t\ ${name} присоединился! \n`; //вывод сообщения о новом юзере
+  document.getElementById("messages").innerText += `\t\t\ ${name} прісоединился! \n`; 
 });
 
 socket.on("render message", data => {
-  if(e.target.elements[0].value=="кот"){
+  if(e.target.elements[0].value = "кот"){
     alert("кот");
-    document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`;
+    document.getElementById("messages").innerText += `===[${data.username}]: ${data.message} \n`; 
   }
-  else{document.getElementById( "messages").innerText += `[${data.username}]: ${data.message} \n`;} //выводим
+  else{
+    document.getElementById("messages").innerText += `[${data.username}]: ${data.message} \n`; 
+  }
+
 });
